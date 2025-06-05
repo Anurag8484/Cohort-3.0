@@ -49,4 +49,20 @@ app.post("/signin",function(req,res){
 
 });
 
+
+app.get("/me",function(req,res){
+    const token = parseFloat(req.headers.authorization);
+    const user = users.find(u => u.token === token);
+    if (user){
+        res.json({
+            username:user.name,
+            password:user.password
+        })
+    }else{
+        res.json({
+            message:"Invalid Token"
+        })
+    }
+})
+
 app.listen(3000);
