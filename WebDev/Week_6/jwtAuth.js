@@ -1,70 +1,96 @@
-const express =  require('express');
+const express = require('express')
+const jwt = require('jsonwebtoken')
 const app = express();
-const jwt = require("jsonwebtoken")
-const JWT_SECRET = "randomPassword"
-app.use(express.json());
+const JWT_SECRET = "HeyIAMHere"
 
-const users = [];
+app.use(express.json())
 
-app.post("/signup", function(req,res){
-    const username = req.body.username;
-    const pass = req.body.password;
+const users = []
 
-    if (users.find( u => u.username === username)){
-        res.send({
-            msg: "Already Exists"
-        })
+
+function auth(req, res, next) {
+  const token = req.headers.token;
+
+  if (token) {
+    const token = req.headers.token;
+    const decodedData = jwt.verify(token, JWT_SECRET);
+    if (decodedData.username) {
+        req.user = users.find((u) => u.username === decodedData.username);
+        next();
+        } else {
+        res.json({
+            Error: "Invalid Token",
+        });
+        return;
     }
-    users.push({
-        username: username,
-        password: pass
-    })
+  } else {
     res.json({
-        message:"You are signed up"
-    })
-    console.log(users);
+      Error: "Please Login Before Moving further",
+    });
+    return;
+  }
 
-});
+   
+} 
 
-
-app.post("/signin",function(req,res){
-
-    const username = req.body.username;
-    const pass = req.body.password;
-    const foundUser = users.find(u => u.username === username && u.password === pass)
-    if (foundUser){
-        const token = jwt.sign({
-            username: username
-        }, JWT_SECRET);
+app.post('/signup',function(req,res) {
+    const username = req.body.username
+    const password = req.body.password
+    if (users.find(u => u.username === username)){
         res.json({
-            token:token
+            Message:"Already Exists"
         })
+        return;
     }else{
-        res.json({
-            msg:"User Not found, // Invalid Creds"
+        users.push({
+            username:username,password:password
         })
-    }
-
-    console.log(users)
-
-});
-
-
-app.get("/me",function(req,res){
-    const token = req.headers.authorization;   //jwt token
-    const decodedToken = jwt.verify(token,JWT_SECRET); // {username:"Anurag etc."}
-    const username = decodedToken.username
-    const user = users.find(u => u.username === username);
-    if (user){
         res.json({
-            username:user.username,
-            password:user.password
-        })
-    }else{
-        res.json({
-            message:"Invalid Token"
+            Message:"Successfully Registered"
         })
     }
 })
 
-app.listen(3000);
+app.post('/signin', function(req,res){
+    const username = req.body.username;
+    const password = req.body.password;
+
+    const foundUser = users.find(u => u.username === username && u.password === password)
+
+    if(!foundUser){
+        res.json({
+            Message:"Incorrect Creds"
+        })
+        return;
+    }else{
+        const token = jwt.sign({
+            username
+        },JWT_SECRET)
+        res.json({
+            Token:token
+        })
+    }
+})
+
+
+
+app.use(auth)
+
+app.get('/me',function(req,res){
+    const user = req.user;
+      res.json({
+        Username: user.username,
+        Pasword: user.password
+      })
+})
+
+
+app.get('/greet',function(req,res){
+    const user = req.user;
+    res.json({
+        Greetings: `Hey ${user.username}!, Welcome to Web Dev CoHort 3.0..`
+    })
+})
+
+
+app.listen(3000)
