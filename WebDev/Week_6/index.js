@@ -33,6 +33,13 @@ function auth(req, res, next) {
    
 } 
 
+
+
+// This helps us host frontent in same port
+app.get("/",function(req,res){
+    res.sendFile(__dirname + "/public/index.html");
+})
+
 app.post('/signup',function(req,res) {
     const username = req.body.username
     const password = req.body.password
@@ -64,7 +71,7 @@ app.post('/signin', function(req,res){
         return;
     }else{
         const token = jwt.sign({
-            username
+            username: username
         },JWT_SECRET)
         res.json({
             Token:token
@@ -80,7 +87,7 @@ app.get('/me',function(req,res){
     const user = req.user;
       res.json({
         Username: user.username,
-        Pasword: user.password
+        Password: user.password
       })
 })
 
