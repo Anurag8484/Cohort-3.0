@@ -1,42 +1,96 @@
 
 
-body {
-  /*  write here */
-  }
-    
-  .container {
-  /*  write here */
-  }
-    
-  h1 {
-  /*  write here */
-  }
-    
-  .input-container {
-  /*  write here */
-  }
-    
-  #todo-input {
-  /*  write here */
-  }
-    
-  #add-todo-btn {
-  /*  write here */
-  }
-    
-  #todo-list {
-   /*  write here */
-  }
-    
-  #todo-list li {
-  /*  write here */
-  }
-    
-  #todo-list li.completed {
-  /*  write here */
-  }
-    
-  button.delete-btn {
-  /*  write here */
-  }
-    
+
+*{
+  font-family: "Inter", sans-serif;
+}
+
+hr{
+  width: 100%;
+  margin-top: 0px;
+  border: 0.7px solid #b1b1b0bd;
+}
+
+.headings{
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.headings2{
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+
+.main{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+  height: 60vh;
+}
+
+.mh1{
+  margin-top: 0px;
+  align-items: center;
+  text-align: center;
+}
+
+
+.input-container{
+  /* border: 1px solid #b1b1b0bd; */
+  justify-content: center;
+  border-radius: 10px;
+  width: 500px;
+  padding: 50px;
+  margin: 0px 0px 0px 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+input{
+  width: 150px;
+  padding: 8px;
+  border-radius: 7px;
+  width: 400px;
+  border: 1px solid #b1b1b0bd;
+  padding: 15px 0px 15px 15px;
+}
+
+.sbmt{
+
+  width: 500px;
+  padding: 9px;
+  border: 1px solid #fff;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background-color: rgb(0, 151, 252);
+  cursor: pointer;
+}
+
+
+
+
+.footer{
+  margin-top: 0px;
+  font-size: 14px;
+  margin-left: 200px;
+  color: #b1b1b0bd;
+
+}
+
+
+.footer a{
+text-decoration: none;
+color: rgb(0, 183, 255);
+}
+
+.footer a:hover{
+
+  color: black;
+}

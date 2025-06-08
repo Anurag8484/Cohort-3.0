@@ -5,18 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>100xTODO</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway+Dots&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h1>100xTODO</h1>
-
-    <div class="input-container">
-      <input type="text" id="todo-input" placeholder="Enter a todo..." />
-      <button id="add-todo-btn">Add Todo</button>
+  <header>
+    <div class="navbar">
+      <p class="headings">TodoLogy</p>
     </div>
-
-    <ul id="todo-list"></ul>
+    <hr>
+  </header>
+  <div class="main">
+    <div class="mh1">
+      <p class="headings2">Welcome</p>
+    </div>
+    <div class="input-container">
+      <input type="text" name="username" id="name" placeholder="Username">
+      <input type="password"  name="password" id="password" placeholder="Password">
+      <button class="sbmt" type="submit">Register</button>
+      <p class="footer">Already have an account ? <a href="/" >Login Now</a></p>
+    </div>
   </div>
+
+
+
+
 
   <script src="script.js"></script>
 </body>
