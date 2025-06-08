@@ -1,4 +1,17 @@
+import axios from 'axios'
 const API_URL = 'http://localhost:3001/todos';
+
+function signup(){
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const response = axios.post("http://localhost:3001/signup",{
+        username:username,
+        password:password
+    });
+    alert("You are Successfully Registered")
+}
+
+
 
 // Fetch existing todos when the page loads
 document.addEventListener('DOMContentLoaded', () => {
