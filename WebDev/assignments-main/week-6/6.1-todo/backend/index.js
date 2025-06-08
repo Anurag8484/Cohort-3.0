@@ -1,6 +1,10 @@
 import express from 'express';
 import cors from 'cors';
+import path from "path";
+import { fileURLToPath } from "url";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 import { getAllTodo, createTodo, updateTodo, deleteTodoById, searchTodo, auth, signin,signup } from './routes/todo.js';
 const app = express();
@@ -9,9 +13,12 @@ const PORT = 3001;
 app.use(cors());
 app.use(express.json());
 
-app.get('/',function(req,res){
-  res.sendFile(__dirname + "../../frontend/index.html")
-})
+const frontendPath = path.resolve(__dirname, "../frontend");
+app.use(express.static(frontendPath));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
 
 app.post('/signin', signin )
 
