@@ -25,10 +25,13 @@ hr{
 
 .main{
   display: flex;
-  flex-direction: row;
-  /* align-items: center; */
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  height: 60vh;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 80px;
+  /* height: 60vh; */
 }
 
 .mh1{
@@ -47,7 +50,7 @@ hr{
 
 .input-container-left{
   /* border: 1px solid #b1b1b0bd; */
-  justify-content: center;
+  justify-content: start;
   border-radius: 10px;
   width: 500px;
   padding: 50px;
@@ -58,7 +61,7 @@ hr{
 }
 .input-container-right{
   /* border: 1px solid #b1b1b0bd; */
-  justify-content: center;
+  justify-content: start;
   border-radius: 10px;
   width: 600px;
   padding: 50px;
@@ -118,27 +121,31 @@ color: rgb(0, 183, 255);
   width: 0px;
   border: 0.5px solid #b1b1b0bd;
   margin: 0px 90px 0px 100px; 
-  height: 100vh;
+  height: 100%;
 }
 
 
 #task-list{
+  margin: 20px 0px 20px 0px;
   border: 0.1px solid #424242;
   border-radius: 9px;
   color: #424242;
-  padding: 18px;
+  padding: 7px;
   background-color: rgba(245, 245, 220, 0.199);
 
 }
 
 #task-text{
-font-size: 1.4rem;
+font-size: 1.2rem;
 font-weight: 500;
+line-height: 35px;
+width: 1400px;
 }
 
 #task-container{
   display: flex;
-  gap: 320px;
+  width: 100%;
+  gap: 30px;
 }
 
 .task-btns{

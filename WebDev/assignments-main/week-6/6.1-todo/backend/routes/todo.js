@@ -63,7 +63,7 @@ export async function signup(req, res) {
 export async function signin(req, res) {
   const username = req.body.username;
   const password = req.body.password;
-  const foundUser = users.find((u) => u.username === username && u.password === password);
+  const foundUser = users.find((u) => u.username == username && u.password == password);
 
   if (!foundUser) {
     res.json({
@@ -77,7 +77,7 @@ export async function signin(req, res) {
     res.setHeader(
         "token",token
     ).json({
-        token:`${token}`
+        Token:token
     })    
 }
 }
@@ -94,7 +94,7 @@ export async function getAllTodo(req, res, next) {
     return;
   }
   res.json({
-    "All Tasks": foundUser.todos,
+    "todos": foundUser.todos,
   });
 }
 
@@ -173,12 +173,8 @@ export async function deleteTodoById(req, res, next) {
 
   const foundUser = users.find((u) => u.username == user.username);
   const foundtask = foundUser.todos.findIndex((u) => u.id == id);
-  if (!foundtask) {
-    res.json({
-      error: `No task found with id ${id}`,
-    });
-    return;
-  }
+
+  
   foundUser.todos.splice(foundtask, 1);
   res.json({ message: `Task with id ${id} deleted successfully.` });
 }
