@@ -1,25 +1,29 @@
 import axios from 'axios'
 const API_URL = 'http://localhost:3001/todos';
 
-function signup(){
+function signin(){
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-    const response = axios.post("http://localhost:3001/signup",{
+    const response = axios.post("http://localhost:3001/signin",{
         username:username,
         password:password
     });
-    alert("You are Successfully Registered")
+
+    localStorage.setItem("token",response.data.token);
+    alert("You are Successfully Logged In")
+    fetchTodos();
 }
 
 
 
 // Fetch existing todos when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-  // fetch todos
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//   // fetch todos
+// });
 
 // Fetch todos from backend
 function fetchTodos() {
+        
     //  write here
 }
 
