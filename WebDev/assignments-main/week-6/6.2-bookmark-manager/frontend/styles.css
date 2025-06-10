@@ -19,6 +19,7 @@ body {
   padding: 55px;
   justify-content: center;
   text-align: center;
+  max-height: 80vh;
  }
 #addbtn{
   text-align: center;
@@ -82,10 +83,24 @@ input::placeholder{
    font-size: 0.9rem;
    
  }
-   
- #bookmark-list {
-  /*start here  */
+
+ #bookmarks-list{
+  display: flex;
+  flex-grow: 8;
+  gap: 0px;
+  margin-top: 20px;
+  flex-direction: column;
  }
+   
+ #bookmarks {
+  /*start here  */
+  overflow-y: auto;
+  display: flex;
+  flex-grow: 1;
+  gap: 10px;
+  margin-top: 10px;
+  flex-direction: column;
+}
    
  #bookmark-list li {
   /*start here  */
@@ -99,3 +114,9 @@ input::placeholder{
   /*start here  */
  }
    
+
+ #bookmarks{
+  border : 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+ }
