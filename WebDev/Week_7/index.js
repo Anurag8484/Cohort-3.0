@@ -1,5 +1,6 @@
 const express = require("express");
 const { UserModel, TodoModel } = require("./db");
+const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 const { default: mongoose, connect } = require("mongoose");
 const JWT_SECRET = "veyassojdhhhd"
@@ -23,14 +24,19 @@ app.post("/signup",async function(req,res){
     const email = req.body.email;
     const password = req.body.password;
     const name = req.body.name
+
+    const hashedPassword = await bcrypt.hash(password, 5);
+    console.log(hashedPassword)
     try {
         await UserModel.create({
-        email: email,
-        password: password,
-        name: name
+          email: email,
+          password: hashedPassword,
+          name: name,
         });
     } catch (error) {
-        console.log(error)        
+        res.json({
+            error: error.errorResponse.errmsg
+        })        
         return;
     }
     res.json({
@@ -43,18 +49,20 @@ app.post("/signin",async function(req,res){
 const email = req.body.email;
 const password = req.body.password;
 let user;
+let passwordMatch;
 
 try {
    user = await UserModel.findOne({
       email: email,
-      password: password,
     });
+
+    passwordMatch = await bcrypt.compare(password, user.password);
     
 } catch (error) {
     console.log(`Error when finding in DB: ${error}`);   
 }
 
-if (user){
+if (passwordMatch){
     const token = jwt.sign(
       {
         id: user._id.toString(),
