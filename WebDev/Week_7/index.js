@@ -5,6 +5,8 @@ const jwt = require("jsonwebtoken");
 const { default: mongoose, connect } = require("mongoose");
 const JWT_SECRET = "veyassojdhhhd"
 const app = express();
+
+const { z } = require("zod")
 app.use(express.json());
 
 async function connectToDB(){
@@ -20,7 +22,23 @@ connectToDB();
 
 
 app.post("/signup",async function(req,res){
-    
+    //input Validation:
+
+    const reqBody = z.object({
+        email: z.string().min(3).max(20).email(),
+        name: z.string().min(3).max(30),
+        password: z.string().min(3).max(20)
+    })
+
+    // const parsedData = reqBody.parse(req.body)
+    const SafeparsedData = reqBody.safeParse(req.body)
+
+    if (!SafeparsedData.success){
+        res.json({
+            error: SafeparsedData.error.issues[0].message
+        })
+        return;
+    }
     const email = req.body.email;
     const password = req.body.password;
     const name = req.body.name
