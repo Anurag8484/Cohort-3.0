@@ -2,27 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { z } = require('zod');
 const bcrypt = require('bcrypt');
+const { userRouter } = require('./routes/user');
+const { courseRouter } = require('./routes/course');
+const { adminRouter } = require('./routes/course');
+
 
 const app = express();
 app.use(express.json())
+
+
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/course", courseRouter);
+app.use("/api/v1/admin", adminRouter);
  
 
 
-app.post("/user/signup", async (req,res)=>{
-    
-})
-app.post("/user/signin", async (req,res)=>{
-
-})
-app.get("/user/purchases", async (req,res)=>{
-
-})
-app.post("/course/purchase", async (req,res)=>{
-
-})
-app.post("/user/signup", async (req,res)=>{
-
-})
-app.post("/courses/", async (req,res)=>{
-
-})
+app.listen(3000)
