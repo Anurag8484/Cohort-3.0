@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const adminRouter = Router();
+const { adminModel } = require('../db')
 
 
 
@@ -33,3 +34,8 @@ adminRouter.put("/course", async (req, res) => {
     message: "Admin signed in",
   });
 });
+
+
+module.exports={
+  adminRouter: adminRouter
+}
