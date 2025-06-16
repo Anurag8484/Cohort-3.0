@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const { z } = require('zod');
+
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const { userRouter } = require('./routes/user');

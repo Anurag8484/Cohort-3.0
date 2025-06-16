@@ -7,11 +7,7 @@ courseRouter.post("/purchase", async (req, res) => {
 
 });
 
-courseRouter.post("/signup", async (req, res) => {
-
-});
-
-courseRouter.post("/courses", async (req, res) => {
+courseRouter.get("/preview", async (req, res) => {
 
 });
 

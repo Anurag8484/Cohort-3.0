@@ -1,13 +1,18 @@
 const { Router } = require('express');
 const adminRouter = Router();
 const { adminModel } = require('../db')
-
+const { z } = require('zod');
 
 
 adminRouter.post("/signup", async (req, res) => {
-  res.json({
-    message: "Admin signed up",
-  });
+  
+  const reqBody = z.object({
+    email: z.string().min(3).max()
+  })
+
+
+
+
 });
 
 adminRouter.post("/signin", async (req, res) => {
@@ -17,9 +22,9 @@ adminRouter.post("/signin", async (req, res) => {
 });
 
 
-adminRouter.get("/course", async (req, res) => {
+adminRouter.get("/bulk", async (req, res) => {
   res.json({
-    message: "Admin signed in",
+    message: "AAll courses",
   });
 });
 
