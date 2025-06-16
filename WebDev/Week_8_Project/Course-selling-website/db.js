@@ -1,40 +1,35 @@
 const { Schema, default: mongoose } = require('mongoose');
-async function connectDb(){
-    await mongoose.connect("mongodb+srv://anurag:8484@cluster0.u7mqesb.mongodb.net/course-selling-website-w8");
-}
 
-connectDb();
 
 const ObjectId = mongoose.Types.ObjectId;
 
-const userSchema = Schema({
+const userSchema = new Schema({
     email: { type:String, unique:true },
-    password: String.fromCharCode,
+    password: String,
     firstName: String,
     lastName: String,
 
 
 });
 
-const adminSchema = Schema({
+const adminSchema = new Schema({
   email: { type: String, unique: true },
-  password: String.fromCharCode,
+  password: String,
   firstName: String,
   lastName: String,
 });
 
-const courseSchema = Schema({
-    title: String,
-    description: String,
-    price: Number,
-    imageUrl: String,
-    creatorId: ObjectId
+const courseSchema = new Schema({
+  title: String,
+  description: String,
+  price: Number,
+  imageUrl: String,
+  creatorId: ObjectId,
 });
 
-const purchaseSchema = Schema({
-    userId: ObjectId,
-    courseId: ObjectId
-
+const purchaseSchema = new Schema({
+  userId: ObjectId,
+  courseId: ObjectId,
 });
 
 
