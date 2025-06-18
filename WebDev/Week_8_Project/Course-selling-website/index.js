@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const { userRouter } = require('./routes/user');
 const { courseRouter } = require('./routes/course');
-const { adminRouter } = require('./routes/course');
+const { adminRouter } = require('./routes/admin');
 dotenv.config();
 
 const secret = process.env.JWT_SECRET;
@@ -23,7 +23,7 @@ app.use(express.json())
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/course", courseRouter);
-// app.use("/api/v1/admin", adminRouter);
+app.use("/api/v1/admin", adminRouter);
  
 
 function main(){

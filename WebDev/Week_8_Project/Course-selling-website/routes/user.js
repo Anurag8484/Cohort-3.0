@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv');
 dotenv.config();
 user_secret = process.env.JWT_USER_SECRET;
-admin_secret = process.env.JWT_ADMIN_SECRET;
+
 
 
 
@@ -65,7 +65,7 @@ userRouter.post("/signin", async (req, res) => {
             error: "User not found",
           });
         }
-        passwordMatch =   bcrypt.compare(password, user.password);
+        passwordMatch =   await bcrypt.compare(password, user.password);
     } catch (error) {
         res.json({
             error: `Error finding in DB ${error}`
