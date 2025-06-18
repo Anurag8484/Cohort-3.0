@@ -1,10 +1,11 @@
 const { Router } = require('express');
 const adminRouter = Router();
-const { adminModel } = require('../db')
+const { adminModel, courseModel } = require('../db')
 const bcrypt  = require('bcrypt')
 const { z } = require('zod');
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv');
+const { adminMiddleware } = require('../middleware/admin')
 dotenv.config();
 
 admin_secret = process.env.JWT_ADMIN_SECRET;
@@ -87,24 +88,104 @@ adminRouter.post("/signin", async (req, res) => {
   }
 });
 
+adminRouter.post("/course",adminMiddleware, async (req, res) => {
+  const adminId = req.userId;
 
-adminRouter.get("/bulk", async (req, res) => {
-  res.json({
-    message: "AAll courses",
-  });
+  const {title, description, imageUrl, price} = req.body;
+
+  try {
+    const course = await courseModel.create({
+      title:title,
+      description:description,
+      imageUrl: imageUrl,
+      price: price,
+      creatorId: adminId
+    });
+    res.json({
+      message:"Course added!",
+      course_id:course._id
+    });
+  } catch (error) {
+    res.json({
+      error:`Error adding to DB: ${error}`
+    })    
+  }
+
+
+});
+
+adminRouter.put("/course",adminMiddleware, async (req, res) => {
+  const adminId = req.userId;
+
+  const { title, description, imageUrl, price, courseId } = req.body;
+
+  const course = await courseModel.find({
+    _id:courseId,
+    creatorId: adminId 
+  })
+  if (course.length < 1) {
+    res.json({
+      error: "Course not found!",
+    });
+    return;
+  }
+
+
+  try {
+    const course = await courseModel.updateOne(
+      {
+        _id: courseId,
+        creatorId: adminId
+      },
+      {
+      title: title,
+      description: description,
+      imageUrl: imageUrl,
+      price: price,
+      creatorId: adminId,
+    });
+    res.json({
+      message: "Course Updated!",
+      course_id: course._id,
+    });
+  } catch (error) {
+    res.json({
+      error: `Error changing edits to DB: ${error}`,
+    });
+  }
 });
 
 
-adminRouter.post("/course", async (req, res) => {
-  res.json({
-    message: "Admin signed in",
-  });
+adminRouter.get("/bulk",adminMiddleware, async (req, res) => {
+  const adminId = req.userId;
+  try {
+    const courses = await courseModel.find({
+      creatorId:adminId
+    });
+    
+    if (courses.length > 0){
+      res.json({
+        courses: courses
+      });
+      return;
+    }else{
+      res.json({
+        message:"There are currently 0 courses. Please add one to view."
+      });
+      return;
+    }
+  } catch (error) {
+    res.json({
+      error:`Error fetching all courses: ${error}`
+    });
+    return;
+  }
+
+
+
 });
-adminRouter.put("/course", async (req, res) => {
-  res.json({
-    message: "Admin signed in",
-  });
-});
+
+
 
 
 module.exports={

@@ -10,7 +10,8 @@ user_secret = process.env.JWT_USER_SECRET;
 
 
 
-const { z } = require('zod')
+const { z } = require('zod');
+const { userMiddleware } = require("../middleware/user");
 
 
 
@@ -91,10 +92,22 @@ userRouter.post("/signin", async (req, res) => {
     }
 });
 
-userRouter.get("/purchases", async (req, res) => {
+userRouter.get("/purchases",userMiddleware, async (req, res) => {
+   const userId = req.userId;
+   try {
+       const purchase = await purchaseModel.find({
+        userId,
+       });
+       res.json({
+        purchasedCourses:purchase
+       });
+       return;
+   } catch (error) {
     res.json({
-      message: "User purchases",
+        error:`Error fetching purchased courses: ${error}`
     });
+    return;
+   }
 });
 
 
