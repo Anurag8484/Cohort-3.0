@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
 
 function App() {
+  const [visible, setVisibility] = useState(true);
+
+  useEffect(function(){
+    setInterval(function(){
+      setVisibility(c => !c)
+    },5000)
+  },[])
+
   return (
     <div>
-      <Counter></Counter>
+      {visible && <Counter></Counter>}
 
     </div>
   )
