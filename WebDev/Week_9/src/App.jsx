@@ -38,6 +38,10 @@ function App() {
 
   }
 
+
+  function delPost(){
+    setPosts(c=>c.slice(0, -1))
+  }
   return (
     <div
       style={{
@@ -49,6 +53,9 @@ function App() {
         <div>
           <button type="button" onClick={addPost}>
             Add Post
+          </button>
+          <button type="button" onClick={delPost}>
+            Delete Post
           </button>
           <div>
             {postComponents}
