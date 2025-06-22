@@ -1,41 +1,35 @@
-import { useState } from "react";
+import React from "react";
 
-function App(){
-  const [timer, settimer] = useState(true);
-
-  return(
-    <div style={{display:"flex", background:"#9f9f9f"}}>
-      <Card>
-        <div>
-          Hi There
-        </div>
-      </Card>
-      <Card>
-        <div>
-          What do you want to post
-          <br />
-          <br />
-          <input></input>
-        </div>
-      </Card>
-    </div>
-  )
-}
-
-function Card({ children }) {
+const Card = ({ children }) => {
   return (
     <div
-      style={{ background: "beige", borderRadius: 10, padding: 10, margin: 10 }}
+      style={{
+        border: "1px solid #ccc",
+        borderRadius: "5px",
+        padding: "20px",
+        margin: "10px",
+        boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.1)",
+      }}
     >
-      Upper Top Bar
-      <br />
-      <br />
       {children}
-      <br />
-      Lower Bottom Bar
     </div>
   );
-}
+};
 
+const App = () => {
+  return (
+    <div>
+      <Card>
+        <h2>Card Title</h2>
+        <p>This is some content inside the card.</p>
+      </Card>
+      <Card>
+        <h2>Another Card</h2>
+        <input style={{borderRadius:12, border:"1px solid", padding:10}}></input>
+        <p>This card has different content!</p>
+      </Card>
+    </div>
+  );
+};
 
 export default App;
