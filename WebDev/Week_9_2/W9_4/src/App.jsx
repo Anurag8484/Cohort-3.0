@@ -1,35 +1,58 @@
-import React from "react";
+import React, { useState, useEffect} from 'react';
 
-const Card = ({ children }) => {
-  return (
-    <div
-      style={{
-        border: "1px solid #ccc",
-        borderRadius: "5px",
-        padding: "20px",
-        margin: "10px",
-        boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.1)",
-      }}
-    >
-      {children}
-    </div>
-  );
-};
 
-const App = () => {
-  return (
+const App = () =>{
+  return(
     <div>
-      <Card>
-        <h2>Card Title</h2>
-        <p>This is some content inside the card.</p>
-      </Card>
-      <Card>
-        <h2>Another Card</h2>
-        <input style={{borderRadius:12, border:"1px solid", padding:10}}></input>
-        <p>This card has different content!</p>
-      </Card>
+      <ErrorBoundary>
+      <Card1 />
+      </ErrorBoundary>
+      <Card2 />
     </div>
   );
 };
+
+function Card1(){
+  // throw new Error("ss")f
+  return(
+    <div style={{backgroundColor:"grey", margin:20}}>
+      "hi"
+    </div>
+  )
+}
+
+function Card2(){
+  return(
+    <div style={{backgroundColor:"grey", margin:20}}>
+      "hlo"
+    </div>
+  )
+}
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, info) {
+    console.error("Error caught:", error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ backgroundColor: "grey", margin: 20 }}>
+          Something went wrong.
+        </div>
+      );  
+    }
+
+    return this.props.children;
+  }
+}
 
 export default App;

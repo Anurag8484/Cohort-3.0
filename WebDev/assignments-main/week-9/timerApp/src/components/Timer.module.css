@@ -47,13 +47,13 @@ body {
     bottom: 0;
     border-radius: 50%;
     background: conic-gradient(#3498db var(--progress, 0%), #4b5563 0);
-    mask: radial-gradient(transparent 65%, black 66%);
     -webkit-mask: radial-gradient(transparent 65%, black 66%);
+    mask: radial-gradient(transparent 65%, black 66%);
   }
   
   .timerTime {
-    font-size: 48px;
-    font-weight: bold;
+    font-size: 2rem;
+    /* font-weight: bold; */
     position: relative;
     z-index: 1;
   }

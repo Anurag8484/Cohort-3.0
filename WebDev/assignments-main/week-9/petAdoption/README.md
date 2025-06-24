@@ -19,7 +19,8 @@ The app has three main parts:
    
 ### Reference UI:
 
-![Image](https://utfs.io/f/A8JZzw0Laf9jEsK2MkhBOGFYQHrk5EVpZl0KxbMgqjTtPu3a)
+![Image](<https://utfs.io/f/A8JZzw0Laf9jEsK2MkhBOGFYQHrk5EVpZ>
+l0KxbMgqjTtPu3a)
 ![Image](https://utfs.io/f/A8JZzw0Laf9jdVd6HKrWunt9yxDYPKUZgv60iAroJbcMF5RN)
 
 ### Bonus Challenge (Optional)
