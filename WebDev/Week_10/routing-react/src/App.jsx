@@ -1,35 +1,78 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+  Outlet,
+} from "react-router-dom";
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <BrowserRouter>
+       
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route path="/neet" element={<Class11Program />} />
+            <Route path="/upsc" element={<UpscProgram />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
-export default App
+function Header(){
+  return (
+    <div>
+      <Link to="/">Allen</Link> | .<Link to="/neet">NEET</Link> | .
+      <Link to="/upsc">UPSC</Link> |.
+      <Link to="/no-content-page">404</Link>
+    </div>
+  );
+}
+
+function Layout() {
+  return (
+    <div>
+      < Header />
+      <br />
+      <br />
+      <br />
+      <br />
+      <Outlet />
+      <br />
+      <br />
+      <br />
+      Footer
+    </div>
+  );
+}
+
+function Class11Program() {
+  return <div>Class 11 Prog Neet</div>;
+}
+function ErrorPage() {
+  return <div>Sorry no content for this</div>;
+}
+function UpscProgram() {
+  const navigate = useNavigate();
+
+  function redirectUser() {
+    navigate("/");
+  }
+  return (
+    <div>
+      Class 12 UPSC Program
+      <br />
+      <button onClick={redirectUser}>Go back to Landing Page</button>
+    </div>
+  );
+}
+function Landing() {
+  return <div>Welcome to Allen</div>;
+}
+
+export default App;
