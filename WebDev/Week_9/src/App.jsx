@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Post } from "./Post";
+import { Timer } from "./TImer";
 
 function App() {
 
@@ -43,27 +44,31 @@ function App() {
     setPosts(c=>c.slice(0, -1))
   }
   return (
-    <div
-      style={{
-        background: "#dfe6e9",
-        height: "100%",
-      }}
-    >
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <div>
-          <button type="button" onClick={addPost}>
-            Add Post
-          </button>
-          <button type="button" onClick={delPost}>
-            Delete Post
-          </button>
-          <div>
-            {postComponents}
-            <br />
-          </div>
-        </div>
-      </div>
-    </div>
+    // <div
+    //   style={{
+    //     background: "#dfe6e9",
+    //     height: "100%",
+    //   }}
+    // >
+    //   <div style={{ display: "flex", justifyContent: "center" }}>
+    //     <div>
+    //       <button type="button" onClick={addPost}>
+    //         Add Post
+    //       </button>
+    //       <button type="button" onClick={delPost}>
+    //         Delete Post
+    //       </button>
+    //       <div>
+    //         {postComponents}
+    //         <br />
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+
+    <>
+    <Timer />
+    </>
   );
 }
 

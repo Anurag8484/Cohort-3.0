@@ -31,7 +31,7 @@ return(
         Lap: {lapTime}
         <br />
         <button onClick={startClock}>Start</button>
-        <button ref={timer} onClick={pauseClock}>Pause</button>
+        <button onClick={pauseClock}>Pause</button>
         <button onClick={lap}>Lap</button>
     </div>
 )

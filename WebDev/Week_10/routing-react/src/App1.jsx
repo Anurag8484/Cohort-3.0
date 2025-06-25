@@ -14,17 +14,17 @@ function App() {
   }
   return (
     <div>
-      {/* <BrowserRouter>
+      <BrowserRouter>
        
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="/neet" element={<Class11Program />} />
-            <Route path="/upsc" element={<UpscProgram />} />
-            <Route path="/" element={<Landing />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter> */}
+       <Routes>
+         <Route path="/" element={<Layout />}>
+           <Route path="/neet" element={<Class11Program />} />
+           <Route path="/upsc" element={<UpscProgram />} />
+           <Route path="/" element={<Landing />} />
+           <Route path="*" element={<ErrorPage />} />
+         </Route>
+       </Routes>
+       </BrowserRouter>
       Signup
       <input ref={inputRef} autoFocus id="name" type="text" />
       <input type="text" />
