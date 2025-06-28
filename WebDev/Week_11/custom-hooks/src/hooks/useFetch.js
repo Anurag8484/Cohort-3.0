@@ -18,3 +18,24 @@ export function usePostTitle(){
     }, []);
     return post.title
 }
+
+
+export function useFetch(url){
+    const [finalData, setFinalData] = useState({});
+
+    async function getDetails(){
+
+        const res = await axios.get(url)
+        setFinalData(res.data)        
+
+    }
+
+    useEffect(()=>{
+        getDetails();
+    },[url])
+    
+    return{
+        finalData
+    }
+
+}
