@@ -1,20 +1,43 @@
 import { useState } from "react";
+import "./App.css"
 
-// a
+// a custom hook
 
-function App(){
+function useCounter(){
   const [count,setCount] = useState(0);
-
+  
   function increaseCount(){
     setCount(count+1)
   }
+  return {
+    count,
+    increaseCount
+  }
+}
 
-return(
-  <div>
-    <button onClick={increaseCount}>Increase {count}</button>
+function App(){
+  return(
+    <div>
+    <Counter />
+    <br /><br />
+    <Counter2 />
   </div>
 )
+}
 
+function Counter(){
+  const {count,increaseCount} = useCounter();
+  return(
+    <div>
+    <button onClick={increaseCount}>Increase {count}</button>
+  </div>)
+}
+function Counter2(){
+  const {count,increaseCount} = useCounter();
+  return(
+    <div>
+    <button onClick={increaseCount}>Increase of CounterT---- {count}</button>
+  </div>)
 }
 
 
