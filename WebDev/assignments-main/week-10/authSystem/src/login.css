@@ -1,0 +1,13 @@
+.loginbtn{
+    padding:10px 15px 10px 15px;
+    font-size:1.5rem;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    
+}
+
+.loginbtn:hover{
+    background-color: gray;
+    /* color: black; */
+}
