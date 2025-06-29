@@ -9,12 +9,11 @@ const RandomUser = () => {
   const [loading,setLoading] = useState(true)
   async function loadUsers(){
     setLoading(true)
-    const res = await axios.get(`https://randomuser.me/api?page=${pageCount}`);
+    const res = await axios.get(
+      `https://randomuser.me/api?page=${pageCount}&results=5`
+    );
     setUser((prevUser) => [
-      ...prevUser,
-     { firstName:res.data.results[0].name.first,
-      lastName:res.data.results[0].name.last,
-      thumbnail:res.data.results[0].picture.thumbnail}
+      ...prevUser, ...res.data.results
     ]);
     setLoading(false)
     
@@ -34,28 +33,29 @@ const RandomUser = () => {
     <>
       <header>
         <div className="left">Hey Lets Know New People</div>
-        <button onClick={() => setPageCount((c) => c + 1)}>
-          Load More users
+            <button onClick={() => setPageCount((c) => c + 1)}>
+        {loading ? (
+            <h4>Loading...</h4>
+          ) : (
+          <p>Load More users</p>
+        )}
         </button>
       </header>
       <section>
         <div className="main">
-          {loading ? (
-            <h4>Loading...</h4>
-          ) : (
-            user.map((u, index) => (
-              <div key={index} className="userCard">
-            <div className="thumb">
-              <img src={u.thumbnail} alt="" />
+          {user.map((u, index) => (
+            <div key={index} className="userCard">
+          <div className="thumb">
+            <img src={u.picture.thumbnail} alt="" />
+          </div>
+          <div className="details">
+            <h4>
+              {u.name.first} {u.name.last}
+            </h4>
+          </div>
             </div>
-            <div className="details">
-              <h4>
-                {u.firstName} {u.lastName}
-              </h4>
-            </div>
-              </div>
-            ))
-          )}
+          ))}
+          
       
         </div>
       </section>
