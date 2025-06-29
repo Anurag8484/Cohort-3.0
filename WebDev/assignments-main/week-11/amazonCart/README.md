@@ -15,6 +15,7 @@ This project demonstrates a shopping cart implementation in a React application 
 ## Problem Statement
 
 Create a React application with the following features:
+
 - A shopping cart to manage products and update item quantities.
 - A wishlist that allows users to add items to the cart.
 - Navigation routes linking the cart icon and logo to the Cart and Wishlist components.
@@ -45,7 +46,6 @@ Create a React application with the following features:
   - A logo linking to the wishlist page.
   - A cart icon linking to the `AmazonCart` component.
   
-
 ### AmazonCart Component
 
 - **Cart State Management**: Uses `cartItemsState` Recoil atom for items in the cart.
@@ -68,17 +68,20 @@ Yes, here’s a more **README-friendly format** for the Student TODOs, with clea
 Implement the following features to improve functionality and user experience:
 
 ### 1. Delete and Undo Option
+
 - **Objective**: Add a delete option to remove items from the wishlist, with an "Undo" option to restore the last deleted item.
 
 ### 2. Default Thumbnail for Missing Images
+
 - **Objective**: Display a placeholder image for products at wishlist that lack a specified thumbnail.
 
 ### 3. Tooltip for Add to Cart Confirmation
+
 - **Objective**: Show a tooltip saying "Added to Cart" when an item is added to the cart from the wishlist.
 
 ---
 
-### Reference UI:
+### Reference UI
 
 ![Image](https://utfs.io/f/A8JZzw0Laf9jsWDdfREK4EWrL9nSe0giovIACkYzHDFRf3aM)
 ![Image](https://utfs.io/f/A8JZzw0Laf9j3K3HCB1eHnWBajspriovNKPtZG1MXc3mw4gR)
