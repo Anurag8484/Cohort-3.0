@@ -1,0 +1,17 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 25px 0px 5px;
+    font-size: 1.3rem;
+    background-color: #131921;
+    color: white;
+    padding: 15px;
+    /* font-weight: 600; */
+
+}
+
+
+
+header div{
+    cursor: pointer;
+}
