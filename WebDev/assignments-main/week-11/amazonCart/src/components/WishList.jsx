@@ -1,8 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import "../WishList.css";
+import { wishItemState } from "../store/wishItemsState";
+import { useRecoilValue } from "recoil";
 
 export function WishList() {
+
+    const items = useRecoilValue(wishItemState);
+
   return (
     <>
       <section>
@@ -14,39 +19,19 @@ export function WishList() {
           </div>
         </div>
         <div className="main-list">
-          <div className="itemCard">
-            <div className="card-top">
-                <h3>Image of the item</h3>
-            </div>
-            <div className="card-middle">
-                <h4>Item Desc</h4>
-            </div>
-            <div className="card-bottom">
+          {items.map((item, index) => (
+            <div key={index} className="itemCard">
+              <div className="card-top">
+                <h3>{item.id}</h3>
+              </div>
+              <div className="card-middle">
+                <h4>{item.name} || {item.price}</h4>
+              </div>
+              <div className="card-bottom">
                 <button>Add to card</button>
+              </div>
             </div>
-          </div>
-          <div className="itemCard">
-            <div className="card-top">
-                <h3>Image of the item</h3>
-            </div>
-            <div className="card-middle">
-                <h4>Item Desc</h4>
-            </div>
-            <div className="card-bottom">
-                <button>Add to card</button>
-            </div>
-          </div>
-          <div className="itemCard">
-            <div className="card-top">
-                <h3>Image of the item</h3>
-            </div>
-            <div className="card-middle">
-                <h4>Item Desc</h4>
-            </div>
-            <div className="card-bottom">
-                <button>Add to card</button>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
     </>

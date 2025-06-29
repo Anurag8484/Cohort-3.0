@@ -5,9 +5,13 @@ import { WishList } from './components/WishList'
 import './App.css'
 import { AmazonCard } from './components/AmazonCart'
 
+import { RecoilRoot } from 'recoil'
+
 function App() {
 
   return(
+    <RecoilRoot>
+
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout />} >
@@ -19,6 +23,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </RecoilRoot>
   )
   
 }
