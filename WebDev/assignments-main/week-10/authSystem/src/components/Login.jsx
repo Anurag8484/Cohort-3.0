@@ -1,8 +1,14 @@
 import React from 'react'
 
-const Login = () => {
+const Login = ({login}) => {
   return (
-    <div>Login</div>
+    <>
+    <header>
+    ReactState
+    <button onClick={login}>Login</button>
+    </header>
+   
+    </>
   )
 }
 

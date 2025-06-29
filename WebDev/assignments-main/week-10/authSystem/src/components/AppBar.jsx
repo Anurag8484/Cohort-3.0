@@ -1,8 +1,14 @@
 import React from 'react'
-
-const AppBar = () => {
+import "../AppBar.css"
+const AppBar = ({username,logout}) => {
   return (
-    <div>AppBar</div>
+    <header>
+      <div>ReactState</div>
+      <div className='right'>
+        <p>Hii {username} !!</p>
+        <button onClick={logout} >Logout</button>
+      </div>
+    </header>
   )
 }
 
