@@ -1,19 +1,27 @@
-import React, { useContext } from 'react'
+import React, { useState,useContext } from 'react'
 import "../login.css"
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from "./AuthSystem";
 
-const Login = () => {
-  const {userlog,login} = useContext(AuthContext)
+const Login = ({Onlogin: propOnLogin}) => {
+  
+  const contextValue = useContext(AuthContext)
+  function handleLogin(){
+    if(contextValue?.login){
+      contextValue.login();
+    }else if (propOnLogin) {
+      propOnLogin()
+      }
+  }
 
-  if(!userlog){
+
     return (
       <>
         <section>
-          <div className="main">
+          <div className="main1">
             <h2>Welcome to the AuthSystem Demo</h2>
             <p>Click on the Login button:</p>
             <ul>
-              <button onClick={login}  className="loginbtn">
+              <button onClick={handleLogin}  className="loginbtn">
                 Login
               </button>
             </ul>
@@ -22,12 +30,6 @@ const Login = () => {
       </>
     );
 
-  }else{
-    return(
-      ""
-    )
   }
-
-}
 
 export default Login

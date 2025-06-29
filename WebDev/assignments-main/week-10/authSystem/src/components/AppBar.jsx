@@ -1,27 +1,22 @@
 import React, { useContext } from 'react'
 import "../AppBar.css"
-import { AuthContext } from '../context/AuthContext'
+import { AuthContext } from './AuthSystem'
 import Login from './Login'
-// const AppBar = ({username,logout}) => {
-//   return (
-//     <header>
-//       <div>ReactState</div>
-//       <div className='right'>
-//         <p>Hii {username} !!</p>
-//         <button onClick={logout} >Logout</button>
-//       </div>
-//     </header>
-//   )
-// }
-const AppBar = () => {
-  const {user,logout,userlog,login} = useContext(AuthContext)
-  if(userlog){
+
+const AppBar = ({username:propUsername,islog:propIslog,login:propLogin,logout:propLogout}) => {
+  const contextValue = useContext(AuthContext)
+  console.log(propIslog)
+  const displayUsername = contextValue?.username ?? propUsername;
+  const displayIsLog = contextValue?.islog ?? propIslog;
+  const handleLogout = contextValue?.logout ?? propLogout
+
+  if(displayIsLog){
     return (
       <header>
         <div>ReactState</div>
         <div className='right'>
-          <p>Hii {user.name} !!</p>
-          <button onClick={logout} >Logout</button>
+          <p>Hii {displayUsername} !!</p>
+          <button onClick={handleLogout} >Logout</button>
         </div>
       </header>
     )
@@ -33,7 +28,6 @@ const AppBar = () => {
         <div className='right'>
         </div>
       </header>
-      <Login/>
       </>
     )
   }
