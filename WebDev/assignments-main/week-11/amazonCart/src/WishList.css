@@ -1,0 +1,60 @@
+.listHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px 0px 10px;
+    border-bottom: 1px solid #d8d4d4;
+
+}
+
+.listhead-right{
+    color: rgb(7, 99, 211);
+    cursor: pointer;
+}
+
+.listhead-right a{
+    
+    text-decoration: none;
+    color: rgb(7, 99, 211);
+}
+
+.listHeader p{
+    font-size: 1.4rem;
+}
+.main-list{
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.itemCard{
+    border: 1px solid #bebcbc;
+    border-radius: 35px;
+
+}
+
+
+.card-top{
+
+    border-bottom: 1px solid;
+
+
+}
+
+.card-bottom button{
+    width: 80%;
+    background-color: rgb(255, 196, 0);
+    border: 1px solid;
+    margin: 10px;
+    padding: 7px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card-bottom button:hover{
+    transform: scale(1.1);
+}

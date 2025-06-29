@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import "../Navbar.module.css"
+import "../Navbar.css"
 export function Navbar() {
     const navigate = useNavigate();
     
