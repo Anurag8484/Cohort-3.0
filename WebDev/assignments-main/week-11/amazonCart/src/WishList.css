@@ -33,15 +33,18 @@
 .itemCard{
     border: 1px solid #bebcbc;
     border-radius: 15px;
+    padding: 10px;
 
+}
+
+img{
+    width: 250px;
 }
 
 
 .card-top{
 
     border-bottom: 1px solid;
-
-
 }
 
 .card-bottom button{
@@ -58,3 +61,4 @@
 .card-bottom button:hover{
     transform: scale(1.1);
 }
+

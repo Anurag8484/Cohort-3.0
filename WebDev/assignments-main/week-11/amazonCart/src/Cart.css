@@ -1,0 +1,144 @@
+.cartLayout{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+    /* padding:20px ; */
+}
+
+.main-list-cart{
+    display: grid;
+    padding: 20px;
+    grid-template-rows: 1fr;
+    gap: 10px;
+    /* border-right: 2px solid grey; */
+}
+
+.CartCard{
+    border: 1px solid #bebcbc;
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.CartCard-top{
+display: grid;
+grid-template-columns: 1fr 3fr 1fr;
+/* border-bottom: 1px solid; */
+}
+
+
+.itemPrice{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+.itemDesc{
+    padding: 5px 10px 0px 5px;
+    margin-left: 12px;
+}
+.CartCard-bottom{
+    border-top: 1px solid rgb(196, 193, 193);
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.itemCount input{
+    width: 20px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid;
+}
+.itemCount{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.itemCount p{
+    border: none;
+    border-radius: 5px;
+    padding: 3px 5px 3px 5px;
+    /* background-color: red; */
+    color: red;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.itemCount p:hover{
+    transform: scale(1.1);
+}
+
+.icon{
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.icon:hover{
+    transform: scale(1.1);
+    text-shadow: 0px 0px 1px black;
+}
+
+
+.addIcon{
+    color: green;
+}
+
+.decIcon{
+    color: red;
+}
+
+
+.itemImage img{
+    width: 200px;
+}
+
+
+.checkout{
+    border-left: 1px solid rgb(211, 209, 209);
+    padding: 20px;
+}
+
+.finalbox{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #bebcbc ;
+    padding: 10px;
+    border-radius: 15px;
+
+}
+
+.final-middle{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid;
+}
+
+
+.final-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+.final-button{
+    display: flex;
+    justify-content: center;
+}
+.finalbox button{
+    background-color: rgb(255, 196, 0);
+    border-radius: 6px;
+    padding: 5px;
+    width: 350px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+}
+
+.final-button button:hover{
+transform: scale(1.1);
+}
+

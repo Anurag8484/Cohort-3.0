@@ -86,3 +86,4 @@ Implement the following features to improve functionality and user experience:
 ![Image](https://utfs.io/f/A8JZzw0Laf9jsWDdfREK4EWrL9nSe0giovIACkYzHDFRf3aM)
 ![Image](https://utfs.io/f/A8JZzw0Laf9j3K3HCB1eHnWBajspriovNKPtZG1MXc3mw4gR)
 ![Image](https://utfs.io/f/A8JZzw0Laf9jmKHTRVDI0gw2iSFX4st1yfhb5xDU6LKrBoHP)
+**Cart State Management**: Uses `cartItemsState` Recoil atom for items in the cart.
