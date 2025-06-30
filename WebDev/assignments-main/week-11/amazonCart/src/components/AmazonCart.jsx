@@ -7,13 +7,28 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { cardItemState } from "../store/cardItemState";
 import "../Cart.css"
 import { addCount } from "../store/cartTotalSelector";
+import { usePrev } from "../hooks/usePrev";
+import { useState } from "react";
+
+
+
 export function AmazonCard() {
     const items = useRecoilValue(cardItemState);
     const setItems = useSetRecoilState(cardItemState)
+    const [undoState,setUndoState] = useState(false)
     let {total,totalCount} = useRecoilValue(addCount)
-    console.log(total)
+
+    const undoItem = usePrev(items)
+    
+    function undoRemove(){
+        setItems(undoItem)
+        setUndoState(false)
+    }
+
 
     function removeItem(item){
+        setUndoState(true)
+        setTimeout(()=>setUndoState(false),5*1000)
         const updatedItems = items.filter((i)=>i.id !== item.id)
         setItems(updatedItems)
     }
@@ -34,6 +49,8 @@ export function AmazonCard() {
         );
 
     }
+
+
 
 
   return (
@@ -71,10 +88,14 @@ export function AmazonCard() {
                       icon={faPlus}
                     />
                     <p onClick={() => removeItem(item)}>Remove</p>
+
                   </div>
                 </div>
               </div>
             ))}
+            {undoState ? (
+                <p onClick={() => undoRemove()}>Undo</p>
+            ):("")}
           </div>
           <div className="checkout">
             <div className="finalbox">
