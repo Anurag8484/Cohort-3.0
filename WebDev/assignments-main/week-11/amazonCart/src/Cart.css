@@ -141,3 +141,15 @@ grid-template-columns: 1fr 3fr 1fr;
 transform: scale(1.1);
 }
 
+
+.undocontent{
+    cursor: pointer;
+    transition: 0.3s;
+    
+}
+
+.undocontent:hover{
+    transform: scale(1.1);
+    background-color: black;
+    color: white;
+}

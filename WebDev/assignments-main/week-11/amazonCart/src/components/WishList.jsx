@@ -4,14 +4,18 @@ import "../WishList.css";
 import { wishItemState } from "../store/wishItemsState";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { cardItemState } from "../store/cardItemState";
+import { useState } from "react";
 
 export function WishList() {
   const items = useRecoilValue(wishItemState);
   const setCartItem = useSetRecoilState(cardItemState);
   const cartItems = useRecoilValue(cardItemState);
+  const [showTip,setShowTip] = useState(false)
 
 
   async function addToCart(item){
+    setShowTip(true)
+    setTimeout(()=>setShowTip(false),5*1000)
     
     setCartItem((prevItems)=>{
       const alreadyInCart = prevItems.find((i)=>i.id === item.id );
@@ -43,6 +47,13 @@ export function WishList() {
   return (
     <>
       <section>
+        {showTip?(
+        <div className="tooltip-box">
+          <div className="tooltip-content">
+            Added to cart
+          </div>
+        </div>
+        ):"" }
         <div className="listHeader">
           <p>Your Wish List</p>
           <div className="listhead-right">

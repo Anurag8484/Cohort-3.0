@@ -1,3 +1,27 @@
+.tooltip-box{
+    position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip-content{
+    /* visibility: hidden; */
+    width: 120px;
+    background-color: rgb(237, 237, 237);
+    color: black;
+    text-align: center;
+    padding: 9px ;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    /* right: 0px; */
+    top: 30px;
+    left: 40rem;
+    z-index: 1;
+    transition: 0.3s;
+}
+
 .listHeader{
     display: flex;
     align-items: center;

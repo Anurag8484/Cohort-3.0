@@ -56,6 +56,13 @@ export function AmazonCard() {
   return (
     <>
       <section>
+        {undoState ? (
+          <div className="tooltip-box">
+            <div className="tooltip-content undocontent" onClick={() => undoRemove()}>Undo</div>
+          </div>
+        ) : (
+          ""
+        )}
         <div className="listHeader">
           <p>Your Cart</p>
           <div className="listhead-right">
@@ -88,14 +95,10 @@ export function AmazonCard() {
                       icon={faPlus}
                     />
                     <p onClick={() => removeItem(item)}>Remove</p>
-
                   </div>
                 </div>
               </div>
             ))}
-            {undoState ? (
-                <p onClick={() => undoRemove()}>Undo</p>
-            ):("")}
           </div>
           <div className="checkout">
             <div className="finalbox">
