@@ -12,15 +12,30 @@ export function WishList() {
 
 
   async function addToCart(item){
-    setCartItem((prevItem)=>[
-      ...prevItem,{
-        id:item.id,
-        imageUrl:item.imageUrl,
-        name:item.name,
-        price: item.price
+    
+    setCartItem((prevItems)=>{
+      const alreadyInCart = prevItems.find((i)=>i.id === item.id );
+
+      if (alreadyInCart){
+        return prevItems.map((i)=>i.id===item.id ? {...i,qty: i.qty + 1}:i)
+      }else{
+        return [
+          ...prevItems,
+          {
+            id: item.id,
+            imageUrl: item.imageUrl,
+            name: item.name,
+            price: item.price,
+            qty: 1,
+          },
+        ];
       }
-    ])
-    console.log(cartItems);
+
+
+
+    })
+
+
     
   }
 
@@ -39,11 +54,11 @@ export function WishList() {
           {items.map((item, index) => (
             <div key={index} className="itemCard">
               <div className="card-top">
-              <img src={item.imageUrl} alt="" />
+                <img src={item.imageUrl} alt="" />
               </div>
               <div className="card-middle">
                 <h5>{item.name}</h5>
-                <h3>{item.price}</h3>
+                <h3>₹{item.price}</h3>
               </div>
               <div className="card-bottom">
                 <button onClick={() => addToCart(item)}>Add to cart</button>
