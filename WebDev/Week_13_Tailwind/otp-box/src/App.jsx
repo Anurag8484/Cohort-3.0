@@ -69,10 +69,10 @@ function App(){
         <div>
           <button
             disabled={!isComplete}
-            className={`text-white m-5 border-white transition-transform duration-300  hover:scale-110 border-1 px-3 py-1 rounded-md cursor-pointer ${
+            className={` m-5 transition-transform duration-300  hover:scale-110 border-1 px-3 py-1 rounded-md cursor-pointer ${
               isComplete
-                ? "bg-green-500 text-white border-green-300"
-                : "bg-gray-600 text-gray-300 border-gray-600 cursor-not-allowed"
+                ? " text-green-500  "
+                : " text-gray-300 border-gray-600 cursor-not-allowed"
             } `}
           >
             Submit
