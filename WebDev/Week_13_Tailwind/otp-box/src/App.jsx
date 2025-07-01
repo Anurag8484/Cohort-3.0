@@ -13,30 +13,30 @@ function App(){
   
   
   function handleOnChange(value,index){
-    console.log(value,index)
+    console.log("handleOnChange called with index:", index, "value:", value);
     if (isNaN(value)) return;
     const newArr = [...inputArr];
-    newArr[index] = value.trim().slice(-1);
+    newArr[index] = value.slice(-1).trim();
     setInputArr(newArr)
-    value.trim() && refArr.current[index + 1]?.focus();
-
     
+    value && value.trim() && refArr.current[index + 1]?.focus();
   }
 
   function handleOnKeyDown(e,index){
-    console.log(e)
     if (!e.target.value && e.key === "Backspace"){
       refArr.current[index-1]?.focus()
+      refArr.current[index - 1]?.select();
+      
     }
     else if (e.key === "ArrowRight") {
       refArr.current[index+1]?.focus()
+      refArr.current[index + 1]?.select();
     } 
     else if (e.key === "ArrowLeft") {
       refArr.current[index-1]?.focus()
+      refArr.current[index - 1]?.select();
     }
-    else{
-      return;
-    }
+  
   }
 
 
@@ -54,7 +54,7 @@ function App(){
                 ref={(input) => (refArr.current[index] = input)}
                 onChange={(e) => handleOnChange(e.target.value, index)}
                 onKeyDown={(e) => handleOnKeyDown(e, index)}
-                className=" border-white caret-transparent focus:border-4  selection:bg-transparent text-white border-2 m-2 w-12 p-2 rounded-xl text-center text-2xl"
+                className=" border-white  focus:border-4 text-white border-2 m-2 w-12 p-2 rounded-xl text-center text-2xl"
               />
             );
           })}
