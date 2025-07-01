@@ -12,15 +12,7 @@ function App(){
   
   
   
-  function handleOnChange(value,index){
-    console.log("handleOnChange called with index:", index, "value:", value);
-    if (isNaN(value)) return;
-    const newArr = [...inputArr];
-    newArr[index] = value.slice(-1).trim();
-    setInputArr(newArr)
-    
-    value && value.trim() && refArr.current[index + 1]?.focus();
-  }
+
 
   function handleOnKeyDown(e,index){
     if (!e.target.value && e.key === "Backspace"){
@@ -35,6 +27,14 @@ function App(){
     else if (e.key === "ArrowLeft") {
       refArr.current[index-1]?.focus()
       refArr.current[index - 1]?.select();
+    }
+
+    else if (/^[0-9]$/.test(e.key)){
+      const newArr = [...inputArr];
+      newArr[index] = e.key
+      setInputArr(newArr);
+      refArr.current[index + 1]?.focus();
+      return;
     }
   
   }
@@ -52,7 +52,7 @@ function App(){
                 key={index}
                 value={inputArr[index]}
                 ref={(input) => (refArr.current[index] = input)}
-                onChange={(e) => handleOnChange(e.target.value, index)}
+
                 onKeyDown={(e) => handleOnKeyDown(e, index)}
                 className=" border-white  focus:border-4 text-white border-2 m-2 w-12 p-2 rounded-xl text-center text-2xl"
               />
