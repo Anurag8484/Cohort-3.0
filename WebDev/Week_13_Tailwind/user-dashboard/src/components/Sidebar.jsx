@@ -14,9 +14,9 @@ export function Sidebar() {
             />
           </div>
 
-          <div className="grid mt-10 grid-cols-2 gap-10 mr-5  items-center  align-middle  m-2 mb-10 ml-2 border-zinc-400">
+          <div className="grid  mt-10 grid-cols-2 gap-10 mr-5  items-center  align-middle  m-2 mb-10 ml-2 border-zinc-400">
             <FontAwesomeIcon icon={faHouse} />
-            <p className="ml-4">Home</p>
+            <p className="ml-4 cursor-pointer">Home</p>
             <FontAwesomeIcon icon={faUsersRectangle} />
             <p className="ml-4">Webinars</p>
             <FontAwesomeIcon icon={faCreditCard} />
