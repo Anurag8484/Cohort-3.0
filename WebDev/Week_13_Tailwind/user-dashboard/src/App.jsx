@@ -1,12 +1,19 @@
+import { useState } from "react";
 import { Home } from "./components/Home";
 import { Sidebar } from "./components/Sidebar";
 
 function App(){
-
   return (
     <>
-    <Sidebar/>
+    {/* <Sidebar/> */}
     {/* <Home />  */}
+
+    <div className={`h-screen  bg-white text-red-800 dark:bg-blue-800 dark:text-black`}>
+
+    <button onClick={() => {
+      document.querySelector("html").classList.toggle("dark", Math.random() > 0.5 ? true : false)
+    }} >Toggle Theme</button>
+    </div>
     </>
   )
 }

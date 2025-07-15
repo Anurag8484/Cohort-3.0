@@ -2,7 +2,7 @@ export function Sidebar() {
   return (
     <div className="flex">
 
-  <div className=" md:w-60 h-screen w-0 transition-all duration-500 text-center">
+  <div className=" md:w-60 w-0 h-screen transition-all ease-in duration-500 text-center">
       SideBar
 
     </div>
