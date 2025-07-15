@@ -5,20 +5,21 @@ import { Sidebar } from "./components/Sidebar";
 function App(){
   return (
     <>
-    {/* <Sidebar/> */}
-    {/* <Home />  */}
+      {/* <Sidebar/> */}
+      {/* <Home />  */}
 
-    <div className={`h-screen  bg-white text-red-800 dark:bg-blue-800 dark:text-black`}>
-
-    <button onClick={() => {
-      document
-        .querySelector("html")
-        .classList.toggle(
-          "dark");
-    }} >Toggle Theme</button>
-    </div>
+      <div className="h-screen bg-white dark:bg-black text-black dark:text-white">
+        <h1 >Hi there</h1>
+        <button
+          onClick={() => {
+            document.querySelector("html").classList.toggle("dark");
+          }}
+        >
+          Toggle Theme
+        </button>
+      </div>
     </>
-  )
+  );
 }
 
 
