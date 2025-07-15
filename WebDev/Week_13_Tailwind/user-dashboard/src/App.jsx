@@ -11,7 +11,10 @@ function App(){
     <div className={`h-screen  bg-white text-red-800 dark:bg-blue-800 dark:text-black`}>
 
     <button onClick={() => {
-      document.querySelector("html").classList.toggle("dark", Math.random() > 0.5 ? true : false)
+      document
+        .querySelector("html")
+        .classList.toggle(
+          "dark");
     }} >Toggle Theme</button>
     </div>
     </>
