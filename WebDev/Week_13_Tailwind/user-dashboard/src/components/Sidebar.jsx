@@ -12,7 +12,7 @@ export function Sidebar({ sidebarOpen, setSideBarOpen }) {
           <div
             className={`${
               sidebarOpen
-                ? "text-black fixed bottom-10 left-1"
+                ? "text-black fixed"
                 : "text-white fixed "
             }  cursor-pointer`}
             onClick={() => {
@@ -22,9 +22,9 @@ export function Sidebar({ sidebarOpen, setSideBarOpen }) {
             <SideBarToggle />
           </div>
         </div>
-        {sidebarOpen && (
+        
           <>
-            <div className="flex flex-col mt-0 text-2sm gap-4 text-regal-gray">
+            <div className="flex flex-col mt-10 text-2sm gap-4 text-regal-gray">
               <div className="flex justify-between p-4 m-2 rounded-2xl  duration-350">
                 <div className="cursor-pointer rounded-md bg-blue-900 text-white pt-1 pr-2 pl-2 pb-1">
                   Webinar.gg
@@ -122,7 +122,7 @@ export function Sidebar({ sidebarOpen, setSideBarOpen }) {
               </div>
             </div>
           </>
-        )}
+       
       </div>
     </>
   );

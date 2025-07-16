@@ -32,9 +32,11 @@ function App(){
   }, [isDesktop])
   return (
     <>
-    <div className="flex bg-regal-blue">
-      <Sidebar sidebarOpen={sidebarOpen} setSideBarOpen ={setSideBarOpen} />
+    <div className="flex bg-regal-blue flex-col md:flex-row">
+
+      { isDesktop && <Sidebar sidebarOpen={sidebarOpen} setSideBarOpen ={setSideBarOpen} />}
       <MainContent sidebarOpen={sidebarOpen} />
+      { !isDesktop && <Sidebar sidebarOpen={sidebarOpen} setSideBarOpen ={setSideBarOpen} />}
     </div>
       {/* <Home />  */}
     </>
