@@ -5,3 +5,5 @@
     --color-main-bg: #0E0E0E;
     --color-sidebar: #333333;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
