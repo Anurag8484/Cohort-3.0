@@ -10,9 +10,9 @@ export function Sidebar({ toggleSideBar, setToggleSideBar }) {
   return (
     <>
       <div
-        className={`bg-sidebar  ${
-          toggleSideBar ? "w-75" : "w-0"
-        } overflow-hidden text-white  duration-400   hidden lg:block`}
+        className={` ${
+          toggleSideBar ? "bg-sidebar" : "bg-[#1A1A1A]"
+        } w-75 overflow-hidden text-white  duration-100   hidden lg:block`}
       >
         <div className={`${toggleSideBar ? "block" : "hidden"} duration-50`}>
           <div className={` flex justify-between m-5  items-center font-bold`}>
@@ -37,21 +37,21 @@ export function Sidebar({ toggleSideBar, setToggleSideBar }) {
             </div>
           </div>
         </div>
-      </div>
-      <div className="hidden lg:block">
-        <div
-          className={` ${
-            toggleSideBar ? "hidden" : "block"
-          }  text-white  items-start w-75      justify-end flex my-10 `}
-        >
-          <span
+        <div className="hidden lg:block">
+          <div
             className={` ${
               toggleSideBar ? "hidden" : "block"
-            } border-[1px] border-gray-600 p-1 rounded-[8px] hidden lg:block hover:scale-105 duration-200`}
-            onClick={() => setToggleSideBar(true)}
+            }  text-white  items-start      justify-end flex my-10 `}
           >
-            <TbLayoutSidebarLeftExpandFilled className="size-6 cursor-pointer " />
-          </span>
+            <span
+              className={` ${
+                toggleSideBar ? "hidden" : "block"
+              } border-[1px] border-gray-600 p-1 rounded-[8px] hidden lg:block hover:scale-105 duration-200`}
+              onClick={() => setToggleSideBar(true)}
+            >
+              <TbLayoutSidebarLeftExpandFilled className="size-6 cursor-pointer " />
+            </span>
+          </div>
         </div>
       </div>
     </>
