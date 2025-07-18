@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { CiLock } from "react-icons/ci";
 import { FaChevronDown, FaStar } from "react-icons/fa";
 import { FaCodeFork, FaFilter } from "react-icons/fa6";
@@ -8,6 +9,33 @@ import { TiTick } from "react-icons/ti";
 import { VscDebugStart } from "react-icons/vsc";
 
 export function Hero() {
+  const [toggleFilterPannel, setToggleFilterPannel] = useState(false);
+  const [filters, setFilters] = useState({
+    todo: false,
+    solved: false,
+    attempted: false,
+    easy: false,
+    medium: false,
+    hard: false,
+    showTags: false,
+  });
+
+  function ToggleFilters(key) {
+    setFilters((prev) => ({ ...prev, [key]: !prev[key] }));
+  }
+
+  function resetFilters() {
+    setFilters({
+      todo: false,
+      solved: false,
+      attempted: false,
+      easy: false,
+      medium: false,
+      hard: false,
+      showTags: false,
+    });
+  }
+
   return (
     <>
       <section className="grid lg:grid-cols-12  gap-0  my-15 mx-10  w-full">
@@ -61,8 +89,8 @@ export function Hero() {
               <IoRefresh className="text-[#A8A8A8] size-5" />
             </div>
             <div className="grid grid-cols-3 gap-2 grid-rows-3 min-h-40 my-1 ">
-              <div className="col-span-2 row-span-3 flex justify-center items-center bg-[#333333] rounded-lg ">
-                <div className="flex size-40   rounded-full relative">
+              <div className="col-span-2 row-span-3 flex justify-center items-center  cursor-pointer bg-[#333333] rounded-lg ">
+                <div className="flex size-40 hover:scale-105 duration-300   rounded-full relative">
                   <svg
                     className="w-full h-full rotate-[-222deg]"
                     viewBox="0 0 100 100"
@@ -87,7 +115,9 @@ export function Hero() {
                       stroke-dashoffset="75"
                     />
                   </svg>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+                  <div
+                    className={`    absolute inset-0 flex flex-col items-center justify-center text-white text-center`}
+                  >
                     <div className="font-bold text-3xl">
                       19<span className="font-[400] text-sm">/19</span>
                     </div>
@@ -103,30 +133,129 @@ export function Hero() {
                   </div>
                 </div>
               </div>
-              <div className=" flex flex-col py-2 font-[600]    items-center  text-sm rounded-lg  bg-[#333333]">
+              <div className=" flex flex-col py-2 font-[600] hover:scale-105 duration-300 cursor-pointer    items-center  text-sm rounded-lg  bg-[#333333]">
                 <span className="text-[#1CBBBA]">Easy</span>
                 <span className="text-white">11/11</span>
               </div>
-              <div className=" flex flex-col py-2 font-[600]    items-center  text-sm rounded-lg  bg-[#333333]">
+              <div className=" flex flex-col py-2 font-[600] hover:scale-105 duration-300 cursor-pointer    items-center  text-sm rounded-lg  bg-[#333333]">
                 <span className="text-[#FFB700]">Med.</span>
                 <span className="text-white">7/7</span>
               </div>
-              <div className=" flex flex-col py-2 font-[600]    items-center  text-sm rounded-lg  bg-[#333333]">
+              <div className=" flex flex-col py-2 font-[600] hover:scale-105 duration-300 cursor-pointer    items-center  text-sm rounded-lg  bg-[#333333]">
                 <span className="text-[#DF3937]">Hard</span>
                 <span className="text-white">1/1</span>
               </div>
             </div>
           </div>
         </div>
-        <div className=" mx-2   lg:col-span-8 min-h-96 p-4    rounded-lg shadow-lg">
-          <div className="flex flex-wrap mb-5 items-center gap-2.5 ">
-            <div className="bg-white flex items-center rounded-2xl px-3 py-1.5 gap-2.5 hover:scale-110 cursor-pointer duration-300">
+        <div className="  mx-2   lg:col-span-8 min-h-96 p-4    rounded-lg shadow-lg">
+          <div className=" relative flex flex-wrap mb-5 items-center gap-2.5 ">
+            <div className="bg-white flex items-center rounded-2xl px-3 py-1.5 gap-2.5 hover:scale-110 cursor-pointer duration-300" onClick={()=>setToggleFilterPannel(!toggleFilterPannel)}>
               <FaFilter />
               <span className=" font-[500] text-[13px]">Filter</span>
             </div>
             <div className="flex gap-1.5 items-center border-1 text-[13px] border-gray-600 rounded-2xl px-2.5 py-1">
               <span className="text-white font-[600]">Easy</span>
               <IoCloseCircle className="text-[#727272] hover:scale-110 cursor-pointer duration-300 hover:text-red-300   size-4" />
+            </div>
+            <div
+              className={` ${
+                toggleFilterPannel ? "block " : "hidden"
+              }  absolute  shadow-lg top-10 border-[1px] border-[#474646] z-[999]   rounded-xl w-80 min-h-64 bg-[#333333]  p-3 text-white font-[500] `}
+            >
+              <span>Status</span>
+              <div className="flex gap-5 my-3 mb-5">
+                <div className="flex gap-2 items-center">
+                  <input
+                    className="rounded-sm border-1 p-2  checked:bg-red-200 appearance-none  "
+                    type="checkbox"
+                    checked={filters.todo}
+                    onChange={() => ToggleFilters("todo")}
+                    name=""
+                    id=""
+                  />
+
+                  <span>Todo</span>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <input
+                    className="rounded-sm border-1 p-2  checked:bg-red-200 appearance-none  "
+                    type="checkbox"
+                    checked={filters.solved}
+                    onChange={() => ToggleFilters("solved")}
+                    name=""
+                    id=""
+                  />
+                  <span>Solved</span>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <input
+                    className="rounded-sm border-1 p-2  checked:bg-red-200 appearance-none  "
+                    type="checkbox"
+                    checked={filters.attempted}
+                    onChange={() => ToggleFilters("attempted")}
+                    name=""
+                    id=""
+                  />
+                  <span>Attempted</span>
+                </div>
+              </div>
+              <span className="">Difficulty</span>
+              <div className="flex my-5 gap-5">
+                <div className="flex gap-2 items-center">
+                  <input
+                    className="rounded-sm border-1  checked:bg-red-200 p-2 appearance-none  "
+                    type="checkbox"
+                    name=""
+                    checked={filters.easy}
+                    onChange={() => ToggleFilters("easy")}
+                    id=""
+                  />
+                  <span className="text-[#1CBBBA]">Easy</span>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <input
+                    className="rounded-sm border-1  checked:bg-red-200 p-2 appearance-none  "
+                    type="checkbox"
+                    checked={filters.medium}
+                    onChange={() => ToggleFilters("medium")}
+                    name=""
+                    id=""
+                  />
+                  <span className="text-[#FFB700]">Medium</span>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <input
+                    className="rounded-sm border-1  checked:bg-red-200  p-2 appearance-none  "
+                    type="checkbox"
+                    checked={filters.hard}
+                    onChange={() => ToggleFilters("hard")}
+                    name=""
+                    id=""
+                  />
+                  <span className="text-[#DF3937]">Hard</span>
+                </div>
+              </div>
+              <div className="flex gap-5 my-3">
+                <div className="flex gap-2 items-center">
+                  <input
+                    className="rounded-sm border-1  checked:bg-red-200 p-2 appearance-none  "
+                    type="checkbox"
+                    checked={filters.showTags}
+                    onChange={() => ToggleFilters("showTags")}
+                    name=""
+                    id=""
+                  />
+                  <span className="my-3">Show Tags</span>
+                </div>
+              </div>
+              <div
+                className=" flex gap-1 cursor-pointer hover:scale-105  duration-300  items-center justify-center w-full py-2 rounded-lg bg-[#383838]"
+                onClick={() => resetFilters()}
+              >
+                <IoRefresh />
+                <span>Reset</span>
+              </div>
             </div>
           </div>
 
