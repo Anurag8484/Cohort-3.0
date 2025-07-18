@@ -38,8 +38,8 @@ export function Hero() {
 
   return (
     <>
-      <section className="grid lg:grid-cols-12  gap-0  my-15 mx-10  w-full">
-        <div className=" bg-[#262626]  max-h-138 min-h-146   mb-15 max-w-150 p-0 translate-y-4 min-w-50    lg:col-span-4 rounded-lg shadow-lg overflow-hidden">
+      <section className="grid lg:grid-cols-12  gap-0   my-15 mx-10  w-full">
+        <div className=" bg-[#262626]  max-h-138 min-h-146 lg:mx-0 mx-auto  mb-15 max-w-150 p-0 translate-y-4 min-w-50     lg:col-span-4 rounded-lg shadow-lg overflow-hidden">
           <div className="border-b-[2px] border-[#333333] pb-5 m-5 ">
             <div className="flex ">
               <span className="bg-amber-50 rounded-[8px] px-1 py-1  text-yellow-500">
@@ -86,7 +86,7 @@ export function Hero() {
           <div className="my-1 mx-5">
             <div className="flex items-center justify-between text-[15px]  ">
               <span className="text-white font-[500]">Progress</span>
-              <IoRefresh className="text-[#A8A8A8] size-5" />
+              <IoRefresh className="text-[#A8A8A8] size-5 hover:scale-110 cursor-pointer duration-300" />
             </div>
             <div className="grid grid-cols-3 gap-2 grid-rows-3 min-h-40 my-1 ">
               <div className="col-span-2 row-span-3 flex justify-center items-center  cursor-pointer bg-[#333333] rounded-lg ">
@@ -150,7 +150,10 @@ export function Hero() {
         </div>
         <div className="  mx-2   lg:col-span-8 min-h-96 p-4    rounded-lg shadow-lg">
           <div className=" relative flex flex-wrap mb-5 items-center gap-2.5 ">
-            <div className="bg-white flex items-center rounded-2xl px-3 py-1.5 gap-2.5 hover:scale-110 cursor-pointer duration-300" onClick={()=>setToggleFilterPannel(!toggleFilterPannel)}>
+            <div
+              className="bg-white flex items-center rounded-2xl px-3 py-1.5 gap-2.5 hover:scale-110 cursor-pointer duration-300"
+              onClick={() => setToggleFilterPannel(!toggleFilterPannel)}
+            >
               <FaFilter />
               <span className=" font-[500] text-[13px]">Filter</span>
             </div>

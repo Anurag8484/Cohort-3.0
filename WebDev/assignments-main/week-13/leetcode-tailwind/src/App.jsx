@@ -8,7 +8,7 @@ export default function App() {
 
   return (
     <>
-      <section className="flex bg-[#1A1A1A] min-h-screen ">
+      <section className="flex  bg-[#1A1A1A] min-h-screen ">
         <Sidebar
           toggleSideBar={toggleSideBar}
           setToggleSideBar={setToggleSideBar}
