@@ -9,7 +9,7 @@
   bg-gray-400 hover:bg-green-600 dark:bg-gray-800 
   text-green-500 hover:text-white
     hover:rounded-xl rounded-3xl
-    transition-all duration-300 ease-linear
-    cursor-pointer shadow-lg ;
+    transition-all duration-300
+    cursor-pointer shadow-lg ease-linear ;
   }
 }

@@ -184,7 +184,7 @@ export function MainContent() {
           </div>
 
           <div className="h-46 rounded-2xl translate-y-20 shadow-lg flex justify-between items-center flex-col  bg-white p-5 md:col-span-3 col-span-11">
-            <div className="grid grid-cols-2 justify-center gap-10">
+            <div className="grid grid-cols-2 gap-15 ">
               <div className="flex flex-col justify-center text-center">
                 <div className="border-0 flex justify-center p-0 mb-0 rounded-[8px]">
                   <svg
