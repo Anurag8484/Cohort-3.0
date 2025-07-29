@@ -1,32 +1,14 @@
 
 
+type Users = Record<string,{id:string,username:string}>
 
-
-
-
-interface Usertype{
-    firstName: string,
-    lastName: string,
-    age: number
+const users: Users = {
+    "user@1":{
+        id: 'user@01',
+        username:'anurag'
+    },
+    "user@12":{
+        id: 'user@012',
+        username:'raman'
+    }
 }
-
-
-
-
-function greet(user:Usertype){
-
-    console.log(`hello ${user.firstName} I think you are just ${user.age} years old ok got it`);
-    return "hahah"
-    
-}
-
-
-let user: Usertype = {
-    firstName:"Anurag",
-    age:23,
-    lastName: "poonia"
-}
-
-
-greet(user)
-
