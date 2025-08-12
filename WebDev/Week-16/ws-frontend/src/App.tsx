@@ -15,7 +15,7 @@ export default function App() {
     }
 
     //@ts-ignore
-    socket.send("ping")
+    socket.send("ping")zzzz
   }
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function App() {
 
   return (
     <div>
-      <input type="text" placeholder="Message..." />
+      <input ref={inputRef} type="text" placeholder="Message..." />
       <br />
       <br />
       <button onClick={sendMsg} type="button">

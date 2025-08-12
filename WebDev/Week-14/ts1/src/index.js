@@ -1,4 +1,6 @@
-function greet(name) {
-    return "Hello ".concat(name);
+function callbk(fn) {
+    setTimeout(fn, 1000);
 }
-console.log(greet("anurag"));
+callbk(function () {
+    console.log("Hello Anurag");
+});

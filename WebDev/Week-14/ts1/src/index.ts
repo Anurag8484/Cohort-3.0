@@ -1,8 +1,8 @@
-function greet(name:string):string{
-
-    return `Hello ${name}`
-
+function callbk(fn:()=>void){
+setTimeout(fn,1000)
 }
 
-
-console.log(greet("anurag"));
+callbk(function(){
+    console.log("Hello Anurag");
+    
+}) 
