@@ -16,7 +16,7 @@ datasource db {
 
 
 model User {
-  id        String   @map("_id") @id @db.ObjectId
+  id        String   @map("_id") @id @db.ObjectId @default(auto())
   name      String
   email     String   @unique
   password  String
@@ -25,7 +25,7 @@ model User {
 }
 
 model Event{
-  id          String   @map("_id") @id @db.ObjectId
+  id          String   @map("_id") @id @db.ObjectId @default(auto())
   title       String
   description String
   date        DateTime
@@ -36,7 +36,7 @@ model Event{
 }
 
 model Booking {
-  id        String   @map("_id") @id @db.ObjectId
+  id        String   @map("_id") @id @db.ObjectId @default(auto())
   user      User     @relation(fields: [userId], references: [id])
   userId    String   @db.ObjectId
   event     Event    @relation(fields: [eventId], references: [id])
