@@ -2,11 +2,14 @@
 import { useRef } from "react";
 import Input from "../components/Input";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function Signin(){
 
     const emailRef = useRef<HTMLInputElement>(null)
     const passwordRef = useRef<HTMLInputElement>(null)
+
+    const router = useRouter();
 
 
     
@@ -29,6 +32,7 @@ export default function Signin(){
                   email: emailRef.current?.value,
                   password: passwordRef.current?.value,
                 });
+                router.push("/events")
               }}>
                 Sign In
               </button>
