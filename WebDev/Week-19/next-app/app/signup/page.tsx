@@ -1,6 +1,7 @@
 "use client";
 
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 
 export default function Signup() {
@@ -9,6 +10,8 @@ export default function Signup() {
 
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+
+  const router = useRouter();
 
   return (
     <div className="w-screen h-screen flex justify-center items-center">
@@ -29,11 +32,13 @@ export default function Signup() {
         </div>
         <button
           className="border-1 py-1 px-2 rounded-lg cursor-pointer hover:scale-110 duration-200"
-          onClick={() => {
-            axios.post("http://localhost:3000/api/v1/signup", {
+          onClick={ async() => {
+            await axios.post("http://localhost:3000/api/v1/signup", {
               username: usernameRef.current?.value,
               password: passwordRef.current?.value,
             });
+
+            router.push("/signin")
           }}
         >
           Sign Up
