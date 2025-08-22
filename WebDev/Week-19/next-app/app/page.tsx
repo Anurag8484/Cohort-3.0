@@ -17,8 +17,7 @@ export default function Home() {
             className="border-1 p-2 rounded-lg hover:bg-neutral-800"
             href="/singup"
           >
-            {" "}
-            Sign Up
+           Sign Up
           </Link>
         </div>
       </div>
