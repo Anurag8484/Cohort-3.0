@@ -7,6 +7,6 @@ export async function POST(req: NextRequest) {
   console.log(data);
 
   return NextResponse.json({
-    message: "You are signed In",
+    message: "You are signed Up",
   });
 }
