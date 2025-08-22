@@ -1,19 +1,19 @@
-'use client'
+"use client";
 import { useRef } from "react";
 import Input from "../components/Input";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Navbar from "../components/Navabr";
 
-export default function Signin(){
+export default function Signin() {
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
-    const emailRef = useRef<HTMLInputElement>(null)
-    const passwordRef = useRef<HTMLInputElement>(null)
+  const router = useRouter();
 
-    const router = useRouter();
-
-
-    
-    return (
+  return (
+    <>
+      <Navbar events={false} />
       <div className="flex h-screen w-screen  justify-center items-center">
         <div className="border-1 border-neutral-700 min-h-60  py-6 justify-between shadow-lg  px-5 flex flex-col text-center rounded-lg">
           <h1 className="text-2xl ">Sign In</h1>
@@ -25,21 +25,25 @@ export default function Signin(){
               placeholder={"Password"}
             />
           </div>
-            <div>
-              <button className=" bg-white text-black  py-1 px-2 rounded-lg cursor-pointer"
-              onClick={async()=>{
-                await axios.post("http://localhost:3000/api/user/signin", {
+          <div>
+            <button
+              className=" bg-white text-black  py-1 px-2 rounded-lg cursor-pointer"
+              onClick={async () => {
+                 axios.post("http://localhost:3000/api/user/signin", {
                   email: emailRef.current?.value,
                   password: passwordRef.current?.value,
+                }).then((res)=>{
+                  localStorage.setItem("user",res.data.user.id)
                 });
-                router.push("/events")
-              }}>
-                Sign In
-              </button>
-            </div>
+              
+                router.push("/events");
+              }}
+            >
+              Sign In
+            </button>
+          </div>
         </div>
       </div>
-    );
+    </>
+  );
 }
-
-

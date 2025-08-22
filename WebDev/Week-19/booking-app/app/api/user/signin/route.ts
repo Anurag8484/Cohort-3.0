@@ -14,6 +14,7 @@ export async function POST(req: NextRequest) {
     if (user) {
       return NextResponse.json({
         message: "You are Signed In.",
+        user
       });
     } else {
       return NextResponse.json({
