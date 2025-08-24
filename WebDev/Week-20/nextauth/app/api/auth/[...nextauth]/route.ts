@@ -1,45 +1,30 @@
 import NextAuth from "next-auth";
-import  CredentialsProvider  from "next-auth/providers/credentials";
-
+import CredentialsProvider from "next-auth/providers/credentials";
 const handler = NextAuth({
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. "Sign in with...")
-      name: "email  ",
+      name: "email",
       // `credentials` is used to generate a form on the sign in page.
       // You can specify which fields should be submitted, by adding keys to the `credentials` object.
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "anurag@gmail.com" },
+        username: { label: "Username", type: "text", placeholder: "jsmith" },
         password: { label: "Password", type: "password" },
-        Admin_password: { label: "Admin Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const username = credentials?.username;
-        const password = credentials?.password;
-        console.log(username)
-        console.log(password)
-        const user = {
-            name: "anurag",
-            id: "1",
-            username: "anurag@gmail.com"
-        }
-
-        if (user){
-            return user;
-        }else{
-            return null;
-        }
-      }
-
+        // Add logic here to look up the user from the credentials supplied
+        return {
+          name: "Anurag",
+          id: "1",
+          email: "anurag@gmail.com",
+        };
+      },
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET
 });
 
-
-
-// export const GET = handler
-// export const POST = handler
-
-export { handler as GET, handler as POST}
+export const GET = handler;
+export const POST = handler;

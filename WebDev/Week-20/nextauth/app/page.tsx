@@ -1,26 +1,29 @@
-'use client'
-
-import { SessionProvider, useSession,signOut,signIn } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { SessionProvider, signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession();
+  return( <div>
 
-  return(
-    <SessionProvider>
-      <RealHome/>
-    </SessionProvider>
-  )
-
-   function RealHome(){
-
-    const session = useSession();
-    return (
-      <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      {session.status === "authenticated" && <button onClick={()=>signOut()}>Logout</button> }
-      {session.status !== "authenticated" && <button onClick={()=>signIn()}>Login</button> }
-      <br />
-      {JSON.stringify(session)}
-    </div>
+    {JSON.stringify(session)}
+  </div>
   );
 }
-}
+
+
+// function OtherHome(){
+//   const session = useSession();
+
+//   return(
+
+//     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+
+//       {session.status === "authenticated" && <button onClick={()=>signOut()}>Log Out</button>}
+//       {session.status !== "authenticated" && <button onClick={()=>signIn()}>Log In</button>}
+//       <br />
+//       {JSON.stringify(session)}
+      
+//     </div>
+//   )
+// }
