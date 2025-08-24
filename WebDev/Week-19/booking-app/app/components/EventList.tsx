@@ -7,13 +7,26 @@ const client = new PrismaClient();
 async function getAllEvents(){
     try {
         const events = await client.event.findMany({ include:{
-            creator: true
+            creator: true,
+            bookings:true
         }});
         console.log(events)
         return events
     } catch (error) {
         console.error(error);
     }
+}
+
+async function bookEvent({ userId, eventId }: { userId: string; eventId: string }) {
+  try {
+    await axios.post("http://localhost:3000/api/event/book",{
+      userId,
+      eventId
+    });
+  } catch (error) {
+    console.error(error);
+    
+  }
 }
 
 
@@ -60,9 +73,11 @@ export default async function EventList(){
               </span>
             </span>
             </div>
+            <span>{event.bookings.length}</span>
             <br />
+
             <div className="text-center">
-              <button className=" bg-white rounded-md py-1 px-2 text-black shadow-lg hover:scale-105 duration-200 cursor-pointer">
+              <button  className=" bg-white rounded-md py-1 px-2 text-black shadow-lg hover:scale-105 duration-200 cursor-pointer">
                 Book
               </button>
             </div>
