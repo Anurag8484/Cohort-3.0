@@ -4,13 +4,13 @@ export default async function blogs({ params }: { params: { postId: string } }) 
     const postId = (await params).postId;
     let res
     let data
-    try {
-         res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`)
-         data = res.data;
+    // try {
+    //      res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+    //      data = res.data;
         
-    } catch (error) {
-        console.error(error)
-    }
+    // } catch (error) {
+    //     console.error(error)
+    // }
 
 
 
@@ -19,7 +19,7 @@ export default async function blogs({ params }: { params: { postId: string } }) 
             Blog Page {postId}
             <br />
             <div>
-                {data.title}
+                {/* {data.title} */}
             </div>
         </div>
     )
